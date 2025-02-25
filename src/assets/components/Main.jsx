@@ -50,37 +50,35 @@ const [selectedTitles, setSelectedTitles] = useState([]);
 
     return(
         <main>
+
+            <h2 className='title_main'>
+                SELEZIONA UN GENERE
+            </h2>
+
             
             
+            <div className='select_div'>
+            <select className='select_main' name="Film" onChange={handleChange}>
 
-            <select name="Film" onChange={handleChange}>
+        <option value="">Seleziona un film</option>
 
-            <option value="">Seleziona un film</option>
+{
+    Movies.map((element, index) => (
 
-            {
-                Movies.map((element, index) => (
+    <option key={index} value={element.genere}>
 
-                <option key={index} value={element.genere}>
+    {element.genere}
 
-                {element.genere}
-    
-    
-                </option>
 
-                ))}
-                    
-               
-                
+    </option>
 
-                    
-                    
-                    
-                    
+    ))}
 
-                
+      </select>
+
+            </div>
+
             
-  
-            </select>
 
 
         {
