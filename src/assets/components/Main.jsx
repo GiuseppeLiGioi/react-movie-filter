@@ -13,6 +13,16 @@ const [Movies, setMovies] = useState([
   
   const [newMovies, setNewMovies] = useState('')
 
+
+
+
+  const handleChange = (e) =>{
+
+  setNewMovies(e.target.value)
+
+  }
+  
+
     return(
         <main>
             
@@ -21,12 +31,28 @@ const [Movies, setMovies] = useState([
             <select name="Film" onChange={handleChange}>
 
             <option value="">Seleziona un film</option>
-            {
-                Movies.map((element, index)=>{
-                    <option key={index} value={element}>Seleziona un genere</option>
-                    {Movies.genere}
 
-                })
+            {
+                Movies.map((element, index) => (
+
+                <option key={index} value={element}>
+
+            {element.genere}
+    
+    
+                </option>
+
+                )
+                    
+               
+                
+
+                    
+                    
+                    
+                    
+
+                )
             }
   
             </select>
