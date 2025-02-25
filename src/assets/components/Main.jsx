@@ -10,17 +10,42 @@ const [Movies, setMovies] = useState([
     { title: 'Interstellar', genere: 'Fantascienza' },
     { title: 'Pulp Fiction', genere: 'Thriller' }
   ])  
-  
-  const [newMovies, setNewMovies] = useState('')
+
+const [selectedGenere, setSelectedGenere] = useState('');
+
+const [selectedTitles, setSelectedTitles] = useState([]);
+
+
+
+
+
+
+
+
 
 
 
 
   const handleChange = (e) =>{
 
-  setNewMovies(e.target.value)
+  const genere = (e.target.value)
 
+  setSelectedGenere(genere)
+
+  let filteredMovies ;
+
+
+  
+  if(genere === ""){
+    filteredMovies = Movies;
+  }else{
+    filteredMovies = Movies.filter((movie) => movie.genere === genere);
   }
+
+
+  setSelectedTitles(filteredMovies.map((movie) => movie.title ));
+
+}
   
 
     return(
@@ -35,14 +60,14 @@ const [Movies, setMovies] = useState([
             {
                 Movies.map((element, index) => (
 
-                <option key={index} value={element}>
+                <option key={index} value={element.genere}>
 
-            {element.genere}
+                {element.genere}
     
     
                 </option>
 
-                )
+                ))}
                     
                
                 
@@ -52,10 +77,21 @@ const [Movies, setMovies] = useState([
                     
                     
 
-                )
-            }
+                
+            
   
             </select>
+
+
+        {
+            <ul>
+
+            {selectedTitles.map((title, index) => (
+            <li key={index}>{title}</li>
+          ))}
+
+            </ul>
+        }
 
             
         
